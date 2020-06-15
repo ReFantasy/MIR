@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <li>最近上传 : {{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+<form action="#" method="post" enctype="multipart/form-data">
+    <p>类型 ：
+        <select name="type">
+            <option value="0">期刊</option>
+            <option value="1">会议</option>
+            <option value="2">项目</option>
+            <option value="3">博客</option>
+            <option value="4">书籍</option>
+            <option value="5">其它</option>
+        </select>
+    </p>
+
+    <p>名称 ：<input type="text" name="name"></p>
+    <p>地址 ：<input type="text" name="source_url"></p>
+    <p>描述 ：<input type="text" name="description" placeholder="评价或关键字"></p>
+    <p>上传者 ：<input type="text" name="uploader"></p>
+    <p>附件 ：<input type="file" name="file"></p>
+
+    <button type="submit" onclick=javaScript:alert("上传成功！")>提交</button>
+</form>
+
+<!--<form action="#" method="POST"-->
+<!--      enctype="multipart/form-data">-->
+<!--    <input type="file" name="file"/>-->
+<!--    <input type="submit"/>-->
+<!--</form>-->
+
+{% endblock %}

@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style type="text/css">
+    body {
+        font-family: arial;
+    }
+
+    table {
+        border: 1px solid #ccc;
+        width: 80%;
+        margin: 0;
+        padding: 0;
+        border-collapse: collapse;
+        border-spacing: 0;
+        margin: 0 auto;
+    }
+
+    table tr {
+        border: 1px solid #ddd;
+        padding: 5px;
+    }
+
+    table th, table td {
+        padding: 10px;
+        text-align: center;
+    }
+
+    table th {
+        text-transform: uppercase;
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+
+    @media screen and (max-width: 600px) {
+        table {
+            border: 0;
+        }
+
+        table thead {
+            display: none;
+        }
+
+        table tr {
+            margin-bottom: 10px;
+            display: block;
+            border-bottom: 2px solid #ddd;
+        }
+
+        table td {
+            display: block;
+            text-align: right;
+            font-size: 13px;
+            border-bottom: 1px dotted #ccc;
+        }
+
+        table td:last-child {
+            border-bottom: 0;
+        }
+
+        table td:before {
+            content: attr(data-label);
+            float: left;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+    }
+
+    .note {
+        max-width: 80%;
+        margin: 0 auto;
+    }
+
+</style>
+
+<ul class="nav justify-content-center">
+    <li class="nav-item">
+        <a class="nav-link active" href="/0">首页</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/upload" target="_blank">上传</a>
+    </li>
+
+    <!--    <li class="nav-item">-->
+    <!--        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>-->
+    <!--    </li>-->
+
+</ul>
+
+
+<table>
+    <thead>
+    <tr>
+        <th>类型</th>
+        <th>名称</th>
+        <th>描述</th>
+        <th>上传人</th>
+        <th>日期</th>
+        <th>附件</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    {% set number_per_page = 10 %}
+    {% for i in data %}
+    {% if (loop.index <= (page_index+1)*number_per_page) and (loop.index >(page_index)*number_per_page)%}
+    <tr>
+        {% if i.type == 0%}
+        <td>
+            <button type="button" class="btn btn-primary">期刊</button>
+        </td>
+        {% elif i.type == 1%}
+        <td>
+            <button type="button" class="btn btn-info">会议</button>
+        </td>
+        {% elif i.type == 2%}
+        <td>
+            <button type="button" class="btn btn-danger">项目</button>
+        </td>
+        {% elif i.type == 3%}
+        <td>
+            <button type="button" class="btn btn-warning">博客</button>
+        </td>
+        {% elif i.type == 4%}
+        <td>
+            <button type="button" class="btn btn-success">书籍</button>
+        </td>
+        {% else %}
+        <td>
+            <button type="button" class="btn btn-secondary">其它</button>
+        </td>
+        {% endif %}
+        <td><a href="{{ i.source_url }}" target="_blank" style="color:mediumslateblue">{{ i.name }}</a></td>
+        <td>{{ i.description }}</td>
+        <td width="10%">{{ i.uploader }}</td>
+        <td width="10%">{{ i.upload_date }}</td>
+        {% if i.appendix_name != None%}
+        <td width="15%"><a href="appendix/{{ i.appendix_name }}" target="_blank" style="color:black">{{ i.appendix_name
+            }}</a></td>
+        {%else%}
+        <td></td>
+        {%endif%}
+    </tr>
+    {% endif%}
+    {% endfor %}
+    </tbody>
+</table>
+
+<!-- 分页-->
+<br>
+<nav aria-label="Page navigation example">
+    <ul class="pagination pagination-sm justify-content-center">
+
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+
+        {% for i in range(0,(((data|length)+number_per_page-1)/number_per_page)|int) %}
+
+        {% if (i <= page_index+1) and (i >= page_index-1)%}
+        <li class="page-item"><a class="page-link" href="/{{i}}">{{i}}</a></li>
+        {%endif%}
+
+        {%endfor%}
+
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+
+    </ul>
+</nav>
+
+
+{% endblock %}

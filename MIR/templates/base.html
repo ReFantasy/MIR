@@ -1,0 +1,143 @@
+<!DOCTYPE html >
+
+<html lang="en">
+<head>
+    <title>{% block title %} Research on MICCAI {% endblock %}</title>
+    <!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<!--    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">-->
+<!--    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>-->
+<!--    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+
+
+    <style type="text/css">
+        /*<![CDATA[*/
+        body {
+            background-color: #ffe;
+            color: #000;
+            font-size: 0.8em;
+            font-family: sans-serif, helvetica;
+            margin: 0;
+            padding: 0;
+        }
+
+        :link {
+            color: #c00;
+        }
+
+        :visited {
+            color: #c00;
+        }
+
+        a:hover {
+            color: #f50;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 0;
+            padding: 0.6em 2em 0.4em;
+            background-color: darkblue;
+            color: #fff;
+            font-weight: normal;
+            font-size: 1.75em;
+            border-bottom: 2px solid #000;
+        }
+
+        h1 strong {
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+
+        h2 {
+            text-align: center;
+            background-color: darkblue;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #fff;
+            margin: 0;
+            padding: 0.5em;
+            border-bottom: 2px solid #000;
+        }
+
+        hr {
+            display: none;
+        }
+
+        .content {
+            padding: 1em 0em;
+        }
+
+        .alert {
+            border: 2px solid #000;
+        }
+
+        img {
+            border: 2px solid #fff;
+            padding: 2px;
+            margin: 2px;
+        }
+
+        a:hover img {
+            border: 2px solid #294172;
+        }
+
+        .logos {
+            margin: 1em;
+            text-align: center;
+        }
+
+        /*]]>*/
+    </style>
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <!-- Content here -->
+
+    <!--      头部-->
+    <h1>Medical Image Resources </h1>
+
+    <!--      内容-->
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+
+    <!--      页脚-->
+    <div class="logos">
+<!--        <a href="http://nginx.net/"><img-->
+<!--                src="{{url_for('static', filename='nginx-logo.png')}}"-->
+<!--                alt="[ Powered by nginx ]"-->
+<!--                width="121" height="30"/></a>-->
+<!--        <a href="http://www.redhat.com/"><img-->
+<!--                src="{{url_for('static', filename='poweredby.png')}}"-->
+<!--                alt="[ Powered by Red Hat Enterprise Linux ]"-->
+<!--                width="88" height="30"/></a>-->
+    </div>
+</div>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
+
+
